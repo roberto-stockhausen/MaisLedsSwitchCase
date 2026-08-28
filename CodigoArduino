@@ -1,0 +1,39 @@
+// C++ code
+//
+int state = 0;
+int buttom = 8;
+int led1 = 9;
+int led2 = 10;
+
+void setup()
+{
+  pinMode(buttom, INPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+}
+
+void loop()
+{
+  if (digitalRead(buttom) == HIGH)
+  {
+    switch(state)
+    {
+     case 0:
+      digitalWrite(led1, HIGH);
+     break;
+     case 1:
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, HIGH);
+     break;
+     case 2:
+      digitalWrite(led2, LOW);
+     break;
+    }
+    state += 1;
+    if (state > 2)
+    {
+     state = 0; 
+    }
+    delay(250);
+  }
+}
